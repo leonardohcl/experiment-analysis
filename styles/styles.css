@@ -1,0 +1,67 @@
+:root {
+    --map-cell-side: 15px;
+}
+
+.map td {
+    width: var(--map-cell-side);
+    height: var(--map-cell-side);
+    border: none;
+    padding: 0;
+}
+
+.map {
+    border: solid 1px black;
+}
+
+.map td:not(.empty):hover {
+    border: solid 1px black;
+}
+
+.map.winner td,
+.map.heat td {
+    font-size: 0;
+}
+
+.result-grid {
+    display: grid;
+    grid-gap: 10px;
+}
+
+.result-grid.transposed {
+    grid-auto-flow: column;
+}
+
+.transposed .result-divider {
+    writing-mode: initial;
+}
+
+.result-grid * {
+    background-color: white;
+}
+
+.empty-2-row {
+    width: 1.2em;
+    grid-row-end: span 2;
+}
+
+.transposed .empty-2-row {
+    grid-row-end: initial;
+    grid-column-end: span 2;
+}
+
+.transposed .result-grid-header,
+.result-divider {
+    writing-mode: sideways-lr;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2em;
+}
+
+.transposed .result-divider,
+.result-grid-header,
+.result-map {
+    width: calc(var(--map-cell-side) * 10 + 1px);
+}
