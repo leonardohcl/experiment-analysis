@@ -502,7 +502,11 @@ app.controller('myCtrl', function ($rootScope, $scope, $timeout) {
         $scope.evaluation = {};
         evals.forEach(eval => {
             let featNum = eval.match(/Scheme:\s(\d+)/)[1];
-            let file = eval.match(/Relation:\s[A-Z]+_(\w+)_ImagenetNorm+\.arff/)[1];
+            let file, fileMatch = eval.match(/Relation:\s[A-Z]+_(\w+)\.arff/);
+            if (fileMatch && fileMatch.length > 1)
+                file = fileMatch[1];
+            else 
+                file = "No name found";            
             let acc = eval.match(/Correctly Classified Instances\s+\d+\s+(\d+\.*\d*)/)[1];
             let data = {
                 feats: parseInt(featNum),
